@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>URL Shortener</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  </head>
+  <body>
+    <section class="hero is-medium is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            URL Shortener
+          </h1>
+        </div>
+      </div>
+    </section>
+    <div class=" main field">
+      <div class="control">
+          URL:
+        <input
+          id="url"
+          class="input is-primary"
+          type="text"
+          placeholder="http://example.com"
+        />
+      </div>
+      <div class="field">
+        <div class="control">
+            Name:
+          <input id="keyword" class="input is-primary" type="text" placeholder="super-catchy">
+        </div>
+    </div>
+    <div class="shorten-btn">
+            <a id = "submit" class="is-success button is-large">Shortenify</a>
+    </div>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.0.0/fetch.min.js"></script>
+   
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="send.js"></script>
+  </body>
+</html>
+
+
+
