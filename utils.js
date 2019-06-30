@@ -24,14 +24,13 @@ async function checkUnique(data) {
   const isRecord = await urls.findOne({
     name: data.keyword
   });
-  console.log(isRecord);
 
   if (isRecord) {
     return Promise.resolve({
       result: 'Not Unique'
     });
   } else {
-    return Promise.reject({
+    return Promise.resolve({
       result: 'good'
     });
   }
@@ -49,19 +48,38 @@ async function almostShorten(data) {
     const isUnique = await checkUnique(data);
     console.log('Isunique result', isUnique);
     if (isUnique.result === 'good') {
+      console.log('unique proved...');
       return await urls.insert({
         url: data.url,
         name: data.keyword,
         created: Date.now()
       });
     } else {
-      return Promise.reject(isUnique.result);
+      return Promise.resolve(isUnique.result);
     }
   } else {
     return Promise.reject(result.error);
   }
 }
 
+async function sendBackUrl(keyword) {
+  const myRecord = await urls.findOne({
+    name: keyword
+  });
+
+  if (myRecord) {
+    return Promise.resolve({
+      result: 'Found',
+      url: myRecord.url
+    });
+  } else {
+    return Promise.reject({
+      result: 'Not Found'
+    });
+  }
+}
+
 module.exports = {
-  almostShorten
+  almostShorten,
+  sendBackUrl
 };
